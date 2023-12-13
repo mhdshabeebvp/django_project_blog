@@ -33,7 +33,7 @@
                         <a class="nav-item nav-link"
                             href="{% url 'blog-home' %}">Home</a><!-- we add a specific name in the each path in blog/urls.py section -->
                         <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-                     </div>
+                    </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         <a class="nav-item nav-link" href="#">Login</a>
@@ -49,6 +49,13 @@
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-8">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
                 {% block content %}{% endblock %}
             </div>
             <div class="col-md-4">
